@@ -9,7 +9,7 @@ const UserProvider = ({ children }) => {
     const [loading, setLoading] = useState(true); // New state to track loading
 
     useEffect(() => {
-        if (!user) return;
+        if (user) return;
 
         const accessToken = localStorage.getItem("token");
         if (!accessToken) {
@@ -50,6 +50,6 @@ const UserProvider = ({ children }) => {
             {children}
         </UserContext.Provider>
     );
-}
+};
 
 export default UserProvider;
