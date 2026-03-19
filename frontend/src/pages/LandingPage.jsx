@@ -6,6 +6,7 @@ import Signup from "./Auth/Signup";
 import Modal from "../components/Modal";
 import { UserContext } from "../context/userContext";
 import ProfileInfoCard from "../components/Cards/ProfileInfoCard";
+// import SpinnerLoader from "../components/Loader/SpinnerLoader";
 const LandingPage = () => {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ const LandingPage = () => {
   };
   return (
     <>
+   
       <div className="w-full min-h-full bg-[#FFFCEF]">
         <div className="w-[500px] h-[500px] bg-amber-200/20 blur-[65px] absolute top-0 left-0" />
 
