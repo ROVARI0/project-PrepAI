@@ -1,8 +1,8 @@
 const { GoogleGenAI } = require("@google/genai");
 const { conceptExplainPrompt, questionAnswerPrompt } = require("../utils/prompts");
 
-// const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-const ai = new GoogleGenAI({ apiKey: "AIzaSyCWVXFoyDsgLZSr5ooRo0if-w20QtJY7wg" });
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+// const ai = new GoogleGenAI({ apiKey: "AIzaSyCWVXFoyDsgLZSr5ooRo0if-w20QtJY7wg" });
 
 
 // @desc    Generate interview questions and answers using Gemini
