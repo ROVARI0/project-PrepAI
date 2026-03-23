@@ -1,3 +1,5 @@
 PORT=8000
 MONGO_URI=mongodb+srv://aftab1:fate100blood@cluster0.vh20fhs.mongodb.net/?appName=Cluster0
 JWT_SECRET=fdsfsdfsdfsdfsdfsdf
+
+// const ai = new GoogleGenAI({ apiKey: "AIzaSyCWVXFoyDsgLZSr5ooRo0if-w20QtJY7wg" });

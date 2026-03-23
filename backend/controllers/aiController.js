@@ -2,7 +2,7 @@ const { GoogleGenAI } = require("@google/genai");
 const { conceptExplainPrompt, questionAnswerPrompt } = require("../utils/prompts");
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-// const ai = new GoogleGenAI({ apiKey: "AIzaSyCWVXFoyDsgLZSr5ooRo0if-w20QtJY7wg" });
+// const ai = new GoogleGenAI({ apiKey: "AIzaSyA4sVnUY_PYhaY_cwdvQY6a7KmWWA30yjk" });
 
 
 // @desc    Generate interview questions and answers using Gemini
@@ -53,25 +53,21 @@ const generateInterviewQuestions = async (req, res) => {
 // @access  Private
 const generateConceptExplanation = async (req, res) => {
   try {
-    const { question } = req.body;
+     const { question } = req.body;
 
-    // Validate required fields
-    if (!question) {
-      return res.status(400).json({ message: "Missing required fields" });
-    }
+  if (!question) {
+    return res.status(400).json({ message: "Missing required fields" });
+  }
 
-    // Build prompt
-    const prompt = conceptExplainPrompt(question);
+  const prompt = conceptExplainPrompt(question);
 
-    // Call Gemini AI
-    const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash-lite",
-      contents: prompt,
-    });
+  const response = await ai.models.generateContent({
+    model: "gemini-2.5-flash-lite",
+    contents: prompt,
+  });
 
-    let rawText = response.text;
-
-    // Clean it: Remove ```json and ``` from beginning and end
+  let rawText = response.text;
+  
     const cleanedText = rawText
       .replace(/^```json\s*/, "") // remove starting ```json
       .replace(/```$/, "")        // remove ending ```
@@ -80,7 +76,7 @@ const generateConceptExplanation = async (req, res) => {
     // Parse JSON safely
     const data = JSON.parse(cleanedText);
 
-    // Return explanation
+    // Return generated questions
     res.status(200).json(data);
   } catch (error) {
     res.status(500).json({
@@ -89,5 +85,6 @@ const generateConceptExplanation = async (req, res) => {
     });
   }
 };
+
 
 module.exports = { generateInterviewQuestions, generateConceptExplanation };
